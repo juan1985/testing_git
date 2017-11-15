@@ -1,0 +1,60 @@
+version: "3"
+services:
+    db:
+        restart: always
+        image: postgres
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./docker/postgres/setup.sql:/docker-entrypoint-initdb.d/1-schema.sql
+        stdin_open: true
+        tty: true
+        domainname: sensogramdb.dev
+        environment:
+            - DEBUG=false
+            - DB_PASS=MSpacile321
+
+    migration:
+        image: python:3
+        restart: always
+        ports:
+            - 5000:5000
+        volumes:
+            - ./:/var/Sensogram
+        stdin_open: true
+        tty: true
+        domainname: sensogramapi.dev
+        working_dir: /var/Sensogram
+        command: bash -c "pip install -r requirements.txt && python db.py db upgrade"
+        # command: bash -c "python run.py"
+    
+    # sensogrampythonserver:
+    #     image: python:3
+    #     restart: always
+    #     ports:
+    #         - 5000:5000
+    #     volumes:
+    #         - ./:/var/Sensogram
+    #     stdin_open: true
+    #     tty: true
+    #     domainname: sensogramapi.dev
+    #     working_dir: /var/Sensogram
+    #     command: bash -c "pip install -r requirements.txt"
+    #     command: bash -c "python db.py db upgrade"
+    #     command: bash -c "python run.py"
+
+    # sensogramnodeserver:
+    #     image: node
+    #     restart: always
+    #     ports:
+    #         - 4000:4000
+    #         - 80:80
+    #     volumes:
+    #         - ./:/var/Sensogram
+    #     stdin_open: true
+    #     tty: true
+    #     domainname: sensogram.dev
+    #     working_dir: /var/Sensogram
+    #     command: bash -c "npm install"
+    #     command: bash -c "npm start"
+

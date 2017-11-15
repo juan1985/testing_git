@@ -1,0 +1,72 @@
+from datetime import timedelta
+import logging
+
+class Config(object):
+    DEBUG = False
+    TESTING = False
+
+    APP_NAME = 'Sensogram'
+    SECRET_KEY = 'add_secret'
+    SECURITY_REGISTERABLE = False
+    SECURITY_RECOVERABLE = False
+    SECURITY_TRACKABLE = True
+    SECURITY_CONFIRMABLE = False
+    SECURITY_PASSWORD_HASH = 'sha512_crypt'
+    SECURITY_PASSWORD_SALT = 'add_salt'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI =\
+        'postgresql+psycopg2://[username]:[password]@localhost:5432/[database]'
+    SECURITY_SEND_REGISTER_EMAIL = False
+    JWT_BLACKLIST_ENABLED = True
+    JWT_TOKEN_LOCATION = "cookies"
+    JWT_COOKIE_CSRF_PROTECT = True
+    JWT_BLACKLIST_TOKEN_CHECKS = "all"
+    WTF_CSRF_ENABLED = False
+    STRIPE_API_KEY=""
+    
+    MAIL_SERVER = ''
+    MAIL_PORT = 465
+    MAIL_USE_SSL = True
+    MAIL_USERNAME = ''
+    MAIL_PASSWORD = ''
+    MAIL_DEFAULT_SENDER = ""
+
+    TWILIO_ACCOUNT_SID = ""
+    TWILIO_AUTH_TOKEN = ""
+    TWILIO_PHONE = ""
+    TWILIO_WEBHOOK_SERVER = ""
+
+    #Amazon S3 configs
+    S3_BUCKET = "sensogram-media"
+    S3_KEY = ""    # S3 account ket
+    S3_SECRET = "" # S3 account secret
+    S3_LOCATION = "https://s3.amazonaws.com/"
+
+    CELERY_RESULT = ""
+    CELERY_BROKER = ""
+
+    REACT_SERVER_NAME = 'localhost:4000'
+
+    INTEGRATION_USERS = []
+
+    DISABLE_PPG = False
+
+    LOG_LEVEL = logging.DEBUG  # could be logging.DEBUG or logging.INFO
+
+    VERSION = "1.30"
+
+    AWS_ACCESS_KEY = ""
+    AWS_SECRET_KEY = ""
+
+class ProductionConfig(Config):
+    DEBUG = False
+
+
+class DevelopmentConfig(Config):
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///data.sqlite'
+    DEBUG = True
+
+
+class TestingConfig(Config):
+    # SQLALCHEMY_DATABASE_URI = 'sqlite://'
+    TESTING = True

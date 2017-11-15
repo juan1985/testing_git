@@ -1,0 +1,13 @@
+venv/
+*pycache*
+config.py
+node_modules/
+bower_components/
+flask_session/
+app/resources/public/
+.credentials
+*.pyc
+*.DS_Store
+env/
+ven/
+temp_audio_files

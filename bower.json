@@ -1,0 +1,6 @@
+{
+  "name": "Sensogram-Web",
+  "dependencies": {
+    "components-font-awesome": "^4.5.0"
+  }
+}
