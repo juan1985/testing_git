@@ -24,7 +24,7 @@
   "license": "",
   "dependencies": {
     "antd": "^2.13.3",
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "babel-core": "6.22.1",
     "babel-loader": "6.2.10",
     "bower-webpack-plugin": "0.1.9",
