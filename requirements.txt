@@ -14,7 +14,7 @@ CommonMark==0.7.3
 docutils==0.14
 flake8==3.2.1
 Flask==0.12.2
-Flask-Cors==3.0.2
+Flask-Cors==3.0.9
 Flask-JWT==0.3.2
 Flask-JWT-Extended==3.3.4
 Flask-Login==0.3.2
